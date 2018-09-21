@@ -49,5 +49,5 @@ publish {
     artifactId = 'customviewlib'
     publishVersion = rootProject.ext.android["versionName"]
     desc = 'zaiqiang custom view lib for android develop'
-    website = 'https://github.com/ziq358/BaseLib'
+    website = 'https://github.com/ziq358/ZQCustomViewLib'
 }
