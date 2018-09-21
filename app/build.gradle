@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    defaultConfig {
+        applicationId "com.zq.zqcustomviewlib"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'zaiqiang'
+            keyPassword 'zaiqiang'
+            storeFile file('../signature.jks')
+            storePassword 'zaiqiang'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    api project(":customviewlib")
+    api 'com.ziq.base:base:1.0.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    kapt "com.jakewharton:butterknife-compiler:8.8.1"
+}

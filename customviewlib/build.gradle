@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'zaiqiang'
+            keyPassword 'zaiqiang'
+            storeFile file('../signature.jks')
+            storePassword 'zaiqiang'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["constraint-layout"]
+}
+
+publish {
+    userOrg = 'zaiqiangxiaohuli'
+    repoName = 'anZhuo'
+    groupId = 'com.zq.customviewlib'
+    artifactId = 'customviewlib'
+    publishVersion = rootProject.ext.android["versionName"]
+    desc = 'zaiqiang custom view lib for android develop'
+    website = 'https://github.com/ziq358/BaseLib'
+}
