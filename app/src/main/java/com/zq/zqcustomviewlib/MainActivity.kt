@@ -1,46 +1,59 @@
 package com.zq.zqcustomviewlib
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
-import butterknife.OnClick
 import com.ziq.base.mvp.BaseActivity
-import com.zq.customviewlib.TranslateLoadingView
+import com.ziq.base.recycleView.BaseViewHolder
+import com.ziq.base.recycleView.adapter.ListRecyclerAdapter
 
 class MainActivity : BaseActivity() {
 
-    @BindView(R.id.translate_loading_view)
-    lateinit var mTranslateLoadingView: TranslateLoadingView
+    //绑定
+    @BindView(R.id.rv_list)
+    lateinit var mRvList: RecyclerView
 
-    private var status: IntArray = intArrayOf(TranslateLoadingView.STATUS_IDLE, TranslateLoadingView.STATUS_SEND, TranslateLoadingView.STATUS_RECEIVE)
-    private var index: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
-//        mTranslateLoadingView = findViewById(R.id.translate_loading_view)
-        mTranslateLoadingView?.setStatus(TranslateLoadingView.STATUS_IDLE)
+        mRvList.layoutManager = LinearLayoutManager(this)
+        mRvList.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        mRvList.adapter = mListRecyclerAdapter
+        initData()
     }
 
-    @OnClick(R.id.next, R.id.last)
-    fun onClick(view: View) {
-        when (view.id) {
-            R.id.next -> {
-                index++
-                if (index >= status.size) {
-                    index = 0
-                }
-                mTranslateLoadingView?.setStatus(status[index])
-            }
-            R.id.last -> {
-                index--
-                if (index < 0) {
-                    index = status.size - 1
-                }
-                mTranslateLoadingView?.setStatus(status[index])
-            }
-        }
+    private fun initData(): Unit {
+        val dataList: ArrayList<DataItem> = ArrayList()
+        dataList.add(DataItem("TranslateLoadingView", TranslateLoadingViewActivity::class.java))
+        mListRecyclerAdapter.setData(dataList)
     }
+
+    //匿名内部类
+    private var mListRecyclerAdapter = object : ListRecyclerAdapter<DataItem>(this) {
+        override fun getItemLayoutRes(): Int {
+            return R.layout.item_list
+        }
+
+        override fun bindDataViewHolder(holder: BaseViewHolder?, position: Int) {
+            val name: TextView? = holder?.getViewById(R.id.tv_name)
+            name?.text = getItem(position).name
+            holder?.itemView?.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View?) {
+                    startActivity(Intent(this@MainActivity, getItem(position).cls))
+                }
+            })
+        }
+
+    }
+
+    //数据类
+    private data class DataItem(var name: String, var cls: Class<*>)
 
 }
