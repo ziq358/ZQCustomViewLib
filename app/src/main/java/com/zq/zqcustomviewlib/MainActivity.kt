@@ -31,7 +31,8 @@ class MainActivity : BaseActivity() {
 
     private fun initData(): Unit {
         val dataList: ArrayList<DataItem> = ArrayList()
-        dataList.add(DataItem("TranslateLoadingView", TranslateLoadingViewActivity::class.java))
+        dataList.add(DataItem("录音翻译状态控件", TranslateLoadingViewActivity::class.java))
+        dataList.add(DataItem("轮播图控件", AutoRollViewPagerActivity::class.java))
         mListRecyclerAdapter.setData(dataList)
     }
 

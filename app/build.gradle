@@ -46,4 +46,6 @@ dependencies {
     api 'com.ziq.base:base:1.0.1'
     implementation 'com.jakewharton:butterknife:8.8.1'
     kapt "com.jakewharton:butterknife-compiler:8.8.1"
+
+    api 'com.squareup.picasso:picasso:2.5.2'
 }
