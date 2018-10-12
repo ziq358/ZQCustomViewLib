@@ -8,21 +8,22 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import butterknife.BindView
-import butterknife.ButterKnife
 import com.ziq.base.mvp.BaseActivity
+import com.ziq.base.mvp.IBasePresenter
 import com.ziq.base.recycleView.BaseViewHolder
 import com.ziq.base.recycleView.adapter.ListRecyclerAdapter
 
-class MainActivity : BaseActivity() {
+class MainActivity() : BaseActivity<IBasePresenter>() {
 
     //绑定
     @BindView(R.id.rv_list)
     lateinit var mRvList: RecyclerView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        ButterKnife.bind(this)
+    override fun initLayoutResourceId(): Int {
+        return R.layout.activity_main;
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
         mRvList.layoutManager = LinearLayoutManager(this)
         mRvList.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         mRvList.adapter = mListRecyclerAdapter
@@ -33,6 +34,7 @@ class MainActivity : BaseActivity() {
         val dataList: ArrayList<DataItem> = ArrayList()
         dataList.add(DataItem("录音翻译状态控件", TranslateLoadingViewActivity::class.java))
         dataList.add(DataItem("轮播图控件", AutoRollViewPagerActivity::class.java))
+        dataList.add(DataItem("水平导航栏控件", HorizontalScrollViewTabActivity::class.java))
         mListRecyclerAdapter.setData(dataList)
     }
 

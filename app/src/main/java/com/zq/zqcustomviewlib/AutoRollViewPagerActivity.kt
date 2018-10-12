@@ -8,20 +8,22 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
 import com.ziq.base.mvp.BaseActivity
+import com.ziq.base.mvp.IBasePresenter
 import com.zq.customviewlib.AutoRollViewPager
 
 /**
  * @author wuyanqiang
  * @date 2018/9/21
  */
-class AutoRollViewPagerActivity: BaseActivity() {
+class AutoRollViewPagerActivity: BaseActivity<IBasePresenter>() {
+
+    override fun initLayoutResourceId(): Int {
+        return R.layout.activity_auto_roll_view_pager;
+    }
 
     @BindView(R.id.auto_roll_view_pager) lateinit var mAutoRollViewPager: AutoRollViewPager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auto_roll_view_pager)
-        ButterKnife.bind(this)
+    override fun initData(savedInstanceState: Bundle?) {
         mAutoRollViewPager.adapter = mRollViewPagerAdapter;
         val dataList: ArrayList<PhotoModel> = ArrayList()
         dataList.add(PhotoModel("http://qa-media-api.xogrp.com/images/986509f2-0a88-4480-ab41-4e7ec7ceb243.webp", "1-photo"))
@@ -31,6 +33,7 @@ class AutoRollViewPagerActivity: BaseActivity() {
         dataList.add(PhotoModel("http://qa-media-api.xogrp.com/images/81036808-509e-4254-aa2a-e531791b436e.webp", "5-photo"))
         mRollViewPagerAdapter.data = dataList
     }
+
 
     private val mRollViewPagerAdapter: AutoRollViewPager.RollViewPagerAdapter<PhotoModel> = object : AutoRollViewPager.RollViewPagerAdapter<PhotoModel>(){
         override fun getItemLayoutRes(): Int {

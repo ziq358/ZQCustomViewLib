@@ -21,6 +21,7 @@
 
         <activity android:name=".TranslateLoadingViewActivity"/>
         <activity android:name=".AutoRollViewPagerActivity"/>
+        <activity android:name=".HorizontalScrollViewTabActivity"/>
     </application>
 
 </manifest>
