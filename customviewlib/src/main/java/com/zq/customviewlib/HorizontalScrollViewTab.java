@@ -145,7 +145,6 @@ public class HorizontalScrollViewTab extends HorizontalScrollView {
         public void setEndColor(int endColor) {
             this.mEndColor = endColor;
         }
-        //获取某一个百分比间的颜色,radio取值[0,1]
         public int getColor(float radio) {
             int redStart = Color.red(mStartColor);
             int blueStart = Color.blue(mStartColor);
