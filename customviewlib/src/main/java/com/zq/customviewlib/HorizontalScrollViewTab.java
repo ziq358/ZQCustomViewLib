@@ -17,7 +17,6 @@ import java.util.List;
 
 /**
  * @author wuyanqiang
- * @date 2018/10/12
  */
 public class HorizontalScrollViewTab extends HorizontalScrollView {
 
