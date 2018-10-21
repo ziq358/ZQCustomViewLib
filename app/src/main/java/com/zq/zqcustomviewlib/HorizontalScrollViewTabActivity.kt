@@ -31,21 +31,21 @@ class HorizontalScrollViewTabActivity: BaseActivity<IBasePresenter>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        var data:ArrayList<String> = arrayListOf()
-        data.add("推荐")
-        data.add("王者荣耀")
-        data.add("绝地求生")
-        data.add("LOL")
-        data.add("星秀")
-        data.add("吃鸡手游")
-        data.add("吃喝玩乐")
-        data.add("主机")
-        data.add("CF")
-        data.add("颜值")
-        data.add("二次元")
-        data.add("DNF")
-        data.add("暴雪")
-        data.add("我的世界")
+        var data:ArrayList<HorizontalScrollViewTab.ContentItem> = arrayListOf()
+        data.add(HorizontalScrollViewTab.ContentItem { "推荐" })
+        data.add(HorizontalScrollViewTab.ContentItem { "王者荣耀"})
+        data.add(HorizontalScrollViewTab.ContentItem { "绝地求生"})
+        data.add(HorizontalScrollViewTab.ContentItem { "LOL"})
+        data.add(HorizontalScrollViewTab.ContentItem { "星秀"})
+        data.add(HorizontalScrollViewTab.ContentItem { "吃鸡手游"})
+        data.add(HorizontalScrollViewTab.ContentItem { "吃喝玩乐"})
+        data.add(HorizontalScrollViewTab.ContentItem { "主机"})
+        data.add(HorizontalScrollViewTab.ContentItem { "CF"})
+        data.add(HorizontalScrollViewTab.ContentItem { "颜值"})
+        data.add(HorizontalScrollViewTab.ContentItem { "二次元"})
+        data.add(HorizontalScrollViewTab.ContentItem { "DNF"})
+        data.add(HorizontalScrollViewTab.ContentItem { "暴雪"})
+        data.add(HorizontalScrollViewTab.ContentItem { "我的世界"})
 
 
         mHorizontalScrollViewTab.addData(data)
@@ -95,14 +95,14 @@ class HorizontalScrollViewTabActivity: BaseActivity<IBasePresenter>() {
         })
     }
 
-    class MyViewPagerAdapter(var data:ArrayList<String>, var fm: FragmentManager): FragmentStatePagerAdapter(fm){
+    class MyViewPagerAdapter(var data:ArrayList<HorizontalScrollViewTab.ContentItem>, var fm: FragmentManager): FragmentStatePagerAdapter(fm){
 
         override fun getCount(): Int {
             return data.size
         }
 
         override fun getItem(position: Int): Fragment {
-            return MyFragment.getInstance(data.get(position))
+            return MyFragment.getInstance(data.get(position).title)
         }
 
     }

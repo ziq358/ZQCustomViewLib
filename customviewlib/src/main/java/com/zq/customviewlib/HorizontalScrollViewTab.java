@@ -44,7 +44,7 @@ public class HorizontalScrollViewTab extends HorizontalScrollView {
         addView(mLlContent);
     }
 
-    public void addData(List<String> list){
+    public void addData(List<ContentItem> list){
         if(list != null){
             for (int i = 0; i < list.size(); i++) {
                 TextView labelTv = new TextView(getContext());
@@ -54,7 +54,7 @@ public class HorizontalScrollViewTab extends HorizontalScrollView {
                 lp.rightMargin = 10;
                 labelTv.setGravity(Gravity.CENTER);
                 labelTv.setLayoutParams(lp);
-                labelTv.setText(list.get(i));
+                labelTv.setText(list.get(i).getTitle());
                 labelTv.setTextColor(Color.parseColor("#000000"));
                 labelTv.setTextSize(14);
                 mLlContent.addView(labelTv);
@@ -123,10 +123,6 @@ public class HorizontalScrollViewTab extends HorizontalScrollView {
         this.mOnHorizontalNavigationSelectListener = mOnHorizontalNavigationSelectListener;
     }
 
-    public interface OnHorizontalNavigationSelectListener {
-        void select(int index);
-    }
-
 
     public class LinearGradientUtil {
         private int mStartColor;
@@ -157,6 +153,14 @@ public class HorizontalScrollViewTab extends HorizontalScrollView {
             int blue = (int) (blueStart + ((blueEnd - blueStart) * radio + 0.5));
             return Color.argb(255,red, greed, blue);
         }
+    }
+
+    public interface OnHorizontalNavigationSelectListener {
+        void select(int index);
+    }
+
+    public interface ContentItem{
+        String getTitle();
     }
 
 }
