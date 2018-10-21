@@ -35,6 +35,7 @@ class MainActivity() : BaseActivity<IBasePresenter>() {
         dataList.add(DataItem("录音翻译状态控件", TranslateLoadingViewActivity::class.java))
         dataList.add(DataItem("轮播图控件", AutoRollViewPagerActivity::class.java))
         dataList.add(DataItem("水平导航栏控件", HorizontalScrollViewTabActivity::class.java))
+        dataList.add(DataItem("popupWindow", PopupWindowActivity::class.java))
         mListRecyclerAdapter.setData(dataList)
     }
 
