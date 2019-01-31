@@ -8,10 +8,13 @@ import android.widget.Button
 import android.widget.PopupWindow
 import butterknife.BindView
 import butterknife.OnClick
+import com.ziq.base.dagger.component.AppComponent
 import com.ziq.base.mvp.BaseActivity
 import com.ziq.base.mvp.IBasePresenter
 
 class PopupWindowActivity : BaseActivity<IBasePresenter>(){
+    override fun initForInject(appComponent: AppComponent?) {
+    }
 
     @BindView(R.id.button1)
     lateinit var button1:Button

@@ -8,12 +8,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import butterknife.BindView
+import com.ziq.base.dagger.component.AppComponent
 import com.ziq.base.mvp.BaseActivity
 import com.ziq.base.mvp.IBasePresenter
 import com.ziq.base.recycleView.BaseViewHolder
 import com.ziq.base.recycleView.adapter.ListRecyclerAdapter
 
 class MainActivity() : BaseActivity<IBasePresenter>() {
+    override fun initForInject(appComponent: AppComponent?) {
+
+    }
 
     //绑定
     @BindView(R.id.rv_list)

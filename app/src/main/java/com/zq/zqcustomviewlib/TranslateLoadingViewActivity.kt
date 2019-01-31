@@ -5,6 +5,7 @@ import android.view.View
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.ziq.base.dagger.component.AppComponent
 import com.ziq.base.mvp.BaseActivity
 import com.ziq.base.mvp.IBasePresenter
 import com.zq.customviewlib.TranslateLoadingView
@@ -14,6 +15,9 @@ import com.zq.customviewlib.TranslateLoadingView
  * @date 2018/9/21
  */
 class TranslateLoadingViewActivity: BaseActivity<IBasePresenter>() {
+    override fun initForInject(appComponent: AppComponent?) {
+    }
+
     override fun initLayoutResourceId(): Int {
         return R.layout.activity_translate_loading_view;
     }

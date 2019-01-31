@@ -7,6 +7,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
+import com.ziq.base.dagger.component.AppComponent
 import com.ziq.base.mvp.BaseActivity
 import com.ziq.base.mvp.IBasePresenter
 import com.zq.customviewlib.AutoRollViewPager
@@ -16,6 +17,9 @@ import com.zq.customviewlib.AutoRollViewPager
  * @date 2018/9/21
  */
 class AutoRollViewPagerActivity: BaseActivity<IBasePresenter>() {
+    override fun initForInject(appComponent: AppComponent?) {
+
+    }
 
     override fun initLayoutResourceId(): Int {
         return R.layout.activity_auto_roll_view_pager;

@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import butterknife.BindView
+import com.ziq.base.dagger.component.AppComponent
 import com.ziq.base.mvp.BaseActivity
 import com.ziq.base.mvp.BaseFragment
 import com.ziq.base.mvp.IBasePresenter
@@ -20,6 +21,9 @@ import java.util.*
  * @date 2018/10/12
  */
 class HorizontalScrollViewTabActivity: BaseActivity<IBasePresenter>() {
+    override fun initForInject(appComponent: AppComponent?) {
+
+    }
 
     @BindView(R.id.HorizontalScrollViewTab)
     lateinit var mHorizontalScrollViewTab: HorizontalScrollViewTab;
@@ -108,6 +112,8 @@ class HorizontalScrollViewTabActivity: BaseActivity<IBasePresenter>() {
     }
 
     class MyFragment: BaseFragment<IBasePresenter>(){
+        override fun initForInject(appComponent: AppComponent?) {
+        }
 
         companion object {// 包裹范围内 属于静态方法
             fun getInstance(label: String): MyFragment {
