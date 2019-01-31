@@ -19,7 +19,7 @@ class TranslateLoadingViewActivity: BaseActivity<IBasePresenter>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        mTranslateLoadingView?.setStatus(TranslateLoadingView.STATUS_IDLE)
+        mTranslateLoadingView.setStatus(TranslateLoadingView.STATUS_IDLE)
     }
 
     @BindView(R.id.translate_loading_view)
@@ -36,14 +36,14 @@ class TranslateLoadingViewActivity: BaseActivity<IBasePresenter>() {
                 if (index >= status.size) {
                     index = 0
                 }
-                mTranslateLoadingView?.setStatus(status[index])
+                mTranslateLoadingView.setStatus(status[index])
             }
             R.id.last -> {
                 index--
                 if (index < 0) {
                     index = status.size - 1
                 }
-                mTranslateLoadingView?.setStatus(status[index])
+                mTranslateLoadingView.setStatus(status[index])
             }
         }
     }
