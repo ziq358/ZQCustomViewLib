@@ -40,6 +40,7 @@ class MainActivity() : BaseActivity<IBasePresenter>() {
         dataList.add(DataItem("轮播图控件", AutoRollViewPagerActivity::class.java))
         dataList.add(DataItem("水平导航栏控件", HorizontalScrollViewTabActivity::class.java))
         dataList.add(DataItem("popupWindow", PopupWindowActivity::class.java))
+        dataList.add(DataItem("密码输入框", PasswordInputActivity::class.java))
         mListRecyclerAdapter.setData(dataList)
     }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PasswordWrapperEditText">
+        <attr name="text_length" format="integer" />
+        <attr name="text_size" format="dimension" />
+        <attr name="hide_input" format="boolean" />
+        <attr name="drawable_size" format="dimension" />
+        <attr name="drawable_after_input" format="reference" />
+        <attr name="drawable_before_input" format="reference" />
+    </declare-styleable>
+
+</resources>
