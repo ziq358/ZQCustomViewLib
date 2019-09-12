@@ -41,6 +41,7 @@ class MainActivity() : BaseActivity<IBasePresenter>() {
         dataList.add(DataItem("水平导航栏控件", HorizontalScrollViewTabActivity::class.java))
         dataList.add(DataItem("popupWindow", PopupWindowActivity::class.java))
         dataList.add(DataItem("密码输入框", PasswordInputActivity::class.java))
+        dataList.add(DataItem("自定义layoutManager", CustomLayoutManagerActivity::class.java))
         mListRecyclerAdapter.setData(dataList)
     }
 

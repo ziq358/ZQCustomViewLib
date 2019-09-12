@@ -48,4 +48,5 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:8.8.1"
 
     api 'com.squareup.picasso:picasso:2.5.2'
+//    implementation "io.reactivex.rxjava3:rxjava:3.+"
 }
