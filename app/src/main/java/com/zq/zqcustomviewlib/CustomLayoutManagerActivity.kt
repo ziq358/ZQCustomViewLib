@@ -48,10 +48,7 @@ class CustomLayoutManagerActivity : BaseActivity<IBasePresenter>() {
         for (i in 0..3){
             list.add(DataItem(i.toString()))
         }
-        recycleView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val layoutManager = OverLayoutManager()
-        layoutManager.setOriginalCount(list.size)
-        recycleView.layoutManager = layoutManager
+        recycleView.layoutManager = OverLayoutManager()
         recycleView.adapter = Adapter(list)
 
         Observable.interval(2000,2000, TimeUnit.MILLISECONDS)

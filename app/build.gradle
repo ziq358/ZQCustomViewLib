@@ -33,6 +33,10 @@ android {
             signingConfig signingConfigs.config
         }
     }
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -42,7 +46,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    api project(":customviewlib")
+//    api project(":customviewlib")
+    api 'com.zq.customviewlib:customviewlib:2.1.1'
     api 'com.ziq.base:base:3.1.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
     kapt "com.jakewharton:butterknife-compiler:8.8.1"

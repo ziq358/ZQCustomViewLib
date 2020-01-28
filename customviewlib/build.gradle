@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -42,12 +41,15 @@ dependencies {
     api rootProject.ext.dependencies["constraint-layout"]
 }
 
-publish {
-    userOrg = 'zaiqiangxiaohuli'
-    repoName = 'anZhuo'
-    groupId = 'com.zq.customviewlib'
-    artifactId = 'customviewlib'
-    publishVersion = rootProject.ext.android["versionName"]
-    desc = 'zaiqiang custom view lib for android develop'
-    website = 'https://github.com/ziq358/ZQCustomViewLib'
-}
+//apply plugin: 'com.novoda.bintray-release'
+//publish {
+//    userOrg = 'zaiqiangxiaohuli'
+//    repoName = 'anZhuo'
+//    groupId = 'com.zq.customviewlib'
+//    artifactId = 'customviewlib'
+//    publishVersion = rootProject.ext.android["versionName"]
+//    desc = 'zaiqiang custom view lib for android develop'
+//    website = 'https://github.com/ziq358/ZQCustomViewLib'
+//}
+
+apply from: './bintrayUpload.gradle'

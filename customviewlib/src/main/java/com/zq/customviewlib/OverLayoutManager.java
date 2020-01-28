@@ -9,8 +9,8 @@ import java.util.Observable;
 
 public class OverLayoutManager extends RecyclerView.LayoutManager {
 
-    private static int num = 4;
-    private int operateCount = num + 1; // 需处理的数目 若num=3，则多处理一个尾 若num=4，则多处理一个头一个尾
+    private int mFirstVisiblePosition;//屏幕可见的第一个View的Position
+    private int mLastVisiblePosition;//屏幕可见的最后一个View的Position
 
     @Override
     public RecyclerView.LayoutParams generateDefaultLayoutParams() {
@@ -19,14 +19,8 @@ public class OverLayoutManager extends RecyclerView.LayoutManager {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
-    private int originalSize;
-
-    public void setOriginalCount(int size) {
-        originalSize = size;
-    }
-
     @Override
-    public boolean canScrollVertically() {
+    public boolean canScrollHorizontally() {
         return true;
     }
 
@@ -37,41 +31,40 @@ public class OverLayoutManager extends RecyclerView.LayoutManager {
             return;
         }
         Log.e("ziq", String.format("onLayoutChildren"));
-        //分离全部已有的view，放入临时缓存
-        detachAndScrapAttachedViews(recycler);//没有回收的话会 重叠。子view一直增多
+
         fillHorizontalLeft(recycler, state, 0);
     }
 
     private void fillHorizontalLeft(RecyclerView.Recycler recycler, RecyclerView.State state, int dx) {
-        int count = getItemCount() > operateCount ? operateCount : getItemCount();
-        float ratio = (3 / 5.0f);
-        if (originalSize >= num || count > originalSize) {
-            // 当 originalSize >= 4 时，或者 当大于初始数据时 即插入数据
-            for (int i = count - 1; i >= 0; i--) {
-                View child = recycler.getViewForPosition(i);
-                measureChildWithMargins(child, 0, 0);
-                addView(child);
-                int width = getDecoratedMeasuredWidth(child);
-                int height = getDecoratedMeasuredHeight(child);
-                if (i == 0) { // 第一条
-                    layoutDecoratedWithMargins(child, 0, -height, width, 0);
-                } else if (i == num) { // 第五条
-                    layoutDecoratedWithMargins(child, 0, (int)(2.2 * (height)), width, (int)(2.2 * (height)) + height);
-                } else { // 第二三四条
-                    layoutDecoratedWithMargins(child, 0, (int) ((i - 1) * height * ratio), width, (int) ((i - 1) * height * ratio + height));
-                }
-            }
-        } else {
-            // 当 originalSize < 4 时，即 1，2，3
-            for (int i = count - 1; i >= 0; i--) {
-                View child = recycler.getViewForPosition(i);
-                measureChildWithMargins(child, 0, 0);
-                addView(child);
-                int width = getDecoratedMeasuredWidth(child);
-                int height = getDecoratedMeasuredHeight(child);
-                layoutDecoratedWithMargins(child, 0, (int) (i * (height * ratio)), width, (int) (i * (height * ratio) + height));
+        //分离全部已有的view，放入临时缓存
+        detachAndScrapAttachedViews(recycler);//没有回收的话会 重叠。子view一直增多
+
+        mFirstVisiblePosition = 0;
+        mLastVisiblePosition = getItemCount() - 1;
+        int startX = 0;
+        int margin = 10;
+
+        for (int i = mFirstVisiblePosition; i <= mLastVisiblePosition; i++) {
+            View child = recycler.getViewForPosition(i);
+            measureChildWithMargins(child, 0, 0);
+            addView(child);
+            int width = getDecoratedMeasuredWidth(child);
+            int height = getDecoratedMeasuredHeight(child);
+            int l, t, r, b;
+            l = startX;
+            t = getPaddingTop();
+            r = startX + width;
+            b = getPaddingTop() + height;
+            layoutDecoratedWithMargins(child, l, t, r, b);
+            startX += width + margin;
+            //判断下一个view的布局位置是不是已经超出屏幕了，若超出，修正mLastVisiPos并跳出遍历
+            if (startX + width + margin > getWidth() - getPaddingRight()) {
+                mLastVisiblePosition = i;
+                break;
             }
         }
+        Log.e("ziq", "fillHorizontalLeft: "+ mLastVisiblePosition);
+
     }
 
 
