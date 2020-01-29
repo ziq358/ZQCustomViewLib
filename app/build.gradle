@@ -37,21 +37,27 @@ android {
         abortOnError false
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-//    api project(":customviewlib")
-    api 'com.zq.customviewlib:customviewlib:2.1.1'
-    api 'com.ziq.base:base:3.1.2'
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    kapt "com.jakewharton:butterknife-compiler:8.8.1"
+    api project(":customviewlib")
+    api ('com.zq.base:base:3.3.0'){
+        exclude module: 'support-compat'
+    }
+    api rootProject.ext.dependencies["constraintlayout"]
+//    api(rootProject.ext.dependencies["butterknife"]) {
+//        exclude module: 'support-annotations'
+//        exclude module: 'support-compat'
+//    }
+    kapt rootProject.ext.dependencies["butterknife-compiler"]
 
     api 'com.squareup.picasso:picasso:2.5.2'
-//    implementation "io.reactivex.rxjava3:rxjava:3.+"
 }

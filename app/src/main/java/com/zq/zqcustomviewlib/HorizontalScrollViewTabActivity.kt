@@ -1,18 +1,18 @@
 package com.zq.zqcustomviewlib
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.ViewPager
 import butterknife.BindView
-import com.ziq.base.dagger.component.AppComponent
-import com.ziq.base.mvp.BaseActivity
-import com.ziq.base.mvp.BaseFragment
+import com.ziq.base.baserx.dagger.component.AppComponent
 import com.ziq.base.mvp.IBasePresenter
+import com.ziq.base.mvp.MvpBaseActivity
+import com.ziq.base.mvp.MvpBaseFragment
 import com.zq.customviewlib.HorizontalScrollViewTab
 import java.util.*
 
@@ -20,7 +20,7 @@ import java.util.*
  * @author wuyanqiang
  * @date 2018/10/12
  */
-class HorizontalScrollViewTabActivity: BaseActivity<IBasePresenter>() {
+class HorizontalScrollViewTabActivity: MvpBaseActivity<IBasePresenter>() {
     override fun initForInject(appComponent: AppComponent?) {
 
     }
@@ -111,7 +111,7 @@ class HorizontalScrollViewTabActivity: BaseActivity<IBasePresenter>() {
 
     }
 
-    class MyFragment: BaseFragment<IBasePresenter>(){
+    class MyFragment: MvpBaseFragment<IBasePresenter>(){
         override fun initForInject(appComponent: AppComponent?) {
         }
 

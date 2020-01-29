@@ -31,15 +31,11 @@ android {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api rootProject.ext.dependencies["appcompat-v7"]
-    api rootProject.ext.dependencies["recyclerview-v7"]
-    api rootProject.ext.dependencies["constraint-layout"]
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["recyclerview"]
 }
+apply from: './bintrayUpload.gradle'
 
 //apply plugin: 'com.novoda.bintray-release'
 //publish {
@@ -52,4 +48,3 @@ dependencies {
 //    website = 'https://github.com/ziq358/ZQCustomViewLib'
 //}
 
-apply from: './bintrayUpload.gradle'

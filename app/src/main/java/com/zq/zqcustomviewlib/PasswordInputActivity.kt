@@ -1,11 +1,11 @@
 package com.zq.zqcustomviewlib
 
 import android.os.Bundle
-import com.ziq.base.dagger.component.AppComponent
-import com.ziq.base.mvp.BaseActivity
+import com.ziq.base.baserx.dagger.component.AppComponent
 import com.ziq.base.mvp.IBasePresenter
+import com.ziq.base.mvp.MvpBaseActivity
 
-class PasswordInputActivity : BaseActivity<IBasePresenter>() {
+class PasswordInputActivity : MvpBaseActivity<IBasePresenter>() {
 
 
     override fun initForInject(appComponent: AppComponent?) {

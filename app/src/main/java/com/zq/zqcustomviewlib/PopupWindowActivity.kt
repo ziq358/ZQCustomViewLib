@@ -1,18 +1,17 @@
 package com.zq.zqcustomviewlib
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.PopupWindow
 import butterknife.BindView
 import butterknife.OnClick
-import com.ziq.base.dagger.component.AppComponent
-import com.ziq.base.mvp.BaseActivity
+import com.ziq.base.baserx.dagger.component.AppComponent
 import com.ziq.base.mvp.IBasePresenter
+import com.ziq.base.mvp.MvpBaseActivity
 
-class PopupWindowActivity : BaseActivity<IBasePresenter>(){
+class PopupWindowActivity : MvpBaseActivity<IBasePresenter>(){
     override fun initForInject(appComponent: AppComponent?) {
     }
 

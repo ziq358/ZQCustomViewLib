@@ -6,9 +6,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.IntDef;
-import android.support.annotation.IntegerRes;
 import android.util.AttributeSet;
+
+import androidx.annotation.IntDef;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -19,7 +20,7 @@ import java.lang.annotation.RetentionPolicy;
  * @since 2018/5/3.
  * Des:
  */
-public class TranslateLoadingView extends android.support.v7.widget.AppCompatImageView {
+public class TranslateLoadingView extends AppCompatImageView {
 
     public static final int STATUS_IDLE = 0;
     public static final int STATUS_SEND = 1;

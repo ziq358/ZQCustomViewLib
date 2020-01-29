@@ -2,19 +2,19 @@ package com.zq.zqcustomviewlib
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import butterknife.BindView
-import com.ziq.base.dagger.component.AppComponent
-import com.ziq.base.mvp.BaseActivity
+import com.ziq.base.baserx.dagger.component.AppComponent
 import com.ziq.base.mvp.IBasePresenter
-import com.ziq.base.recycleView.BaseViewHolder
-import com.ziq.base.recycleView.adapter.ListRecyclerAdapter
+import com.ziq.base.mvp.MvpBaseActivity
+import com.ziq.base.recycleview.BaseViewHolder
+import com.ziq.base.recycleview.adapter.ListRecyclerAdapter
 
-class MainActivity() : BaseActivity<IBasePresenter>() {
+class MainActivity() : MvpBaseActivity<IBasePresenter>() {
     override fun initForInject(appComponent: AppComponent?) {
 
     }

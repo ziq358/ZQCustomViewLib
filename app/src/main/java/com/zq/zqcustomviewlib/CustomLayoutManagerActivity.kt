@@ -1,34 +1,26 @@
 package com.zq.zqcustomviewlib
 
-import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import butterknife.BindView
-import com.ziq.base.dagger.component.AppComponent
-import com.ziq.base.mvp.BaseActivity
+import com.ziq.base.baserx.dagger.component.AppComponent
 import com.ziq.base.mvp.IBasePresenter
-import com.ziq.base.recycleView.BaseAdapter
-import com.ziq.base.recycleView.BaseViewHolder
-import com.ziq.base.recycleView.BaseViewType
-import com.ziq.base.recycleView.adapter.ListRecyclerAdapter
-import com.ziq.base.recycleView.type.ListDataViewType
+import com.ziq.base.mvp.MvpBaseActivity
+import com.ziq.base.recycleview.BaseViewHolder
 import com.zq.customviewlib.OverLayoutManager
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import java.util.Random
+import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
-class CustomLayoutManagerActivity : BaseActivity<IBasePresenter>() {
+class CustomLayoutManagerActivity : MvpBaseActivity<IBasePresenter>() {
 
     @BindView(R.id.recycleView)
     lateinit var recycleView : RecyclerView

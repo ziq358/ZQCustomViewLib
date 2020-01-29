@@ -5,18 +5,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import butterknife.BindView
-import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
-import com.ziq.base.dagger.component.AppComponent
-import com.ziq.base.mvp.BaseActivity
+import com.ziq.base.baserx.dagger.component.AppComponent
 import com.ziq.base.mvp.IBasePresenter
+import com.ziq.base.mvp.MvpBaseActivity
 import com.zq.customviewlib.AutoRollViewPager
 
 /**
  * @author wuyanqiang
  * @date 2018/9/21
  */
-class AutoRollViewPagerActivity: BaseActivity<IBasePresenter>() {
+class AutoRollViewPagerActivity: MvpBaseActivity<IBasePresenter>() {
     override fun initForInject(appComponent: AppComponent?) {
 
     }
@@ -30,11 +29,11 @@ class AutoRollViewPagerActivity: BaseActivity<IBasePresenter>() {
     override fun initData(savedInstanceState: Bundle?) {
         mAutoRollViewPager.adapter = mRollViewPagerAdapter;
         val dataList: ArrayList<PhotoModel> = ArrayList()
-        dataList.add(PhotoModel("http://qa-media-api.xogrp.com/images/986509f2-0a88-4480-ab41-4e7ec7ceb243.webp", "1-photo"))
-        dataList.add(PhotoModel("http://qa-media-api.xogrp.com/images/5e917e94-d6da-422d-be39-2667f143b598.webp", "2-photo"))
-        dataList.add(PhotoModel("http://qa-media-api.xogrp.com/images/58fe2f3a-0ecc-4b50-91ab-f378214f49f4.webp", "3-photo"))
-        dataList.add(PhotoModel("http://qa-media-api.xogrp.com/images/088ea6d6-74fd-49a1-a483-0f34e847714c.webp", "4-photo"))
-        dataList.add(PhotoModel("http://qa-media-api.xogrp.com/images/81036808-509e-4254-aa2a-e531791b436e.webp", "5-photo"))
+        dataList.add(PhotoModel("https://qa-media-api.xogrp.com/images/986509f2-0a88-4480-ab41-4e7ec7ceb243.webp", "1-photo"))
+        dataList.add(PhotoModel("https://qa-media-api.xogrp.com/images/5e917e94-d6da-422d-be39-2667f143b598.webp", "2-photo"))
+        dataList.add(PhotoModel("https://qa-media-api.xogrp.com/images/58fe2f3a-0ecc-4b50-91ab-f378214f49f4.webp", "3-photo"))
+        dataList.add(PhotoModel("https://qa-media-api.xogrp.com/images/088ea6d6-74fd-49a1-a483-0f34e847714c.webp", "4-photo"))
+        dataList.add(PhotoModel("https://qa-media-api.xogrp.com/images/81036808-509e-4254-aa2a-e531791b436e.webp", "5-photo"))
         mRollViewPagerAdapter.data = dataList
     }
 

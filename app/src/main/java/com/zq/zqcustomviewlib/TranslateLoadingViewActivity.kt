@@ -3,18 +3,17 @@ package com.zq.zqcustomviewlib
 import android.os.Bundle
 import android.view.View
 import butterknife.BindView
-import butterknife.ButterKnife
 import butterknife.OnClick
-import com.ziq.base.dagger.component.AppComponent
-import com.ziq.base.mvp.BaseActivity
+import com.ziq.base.baserx.dagger.component.AppComponent
 import com.ziq.base.mvp.IBasePresenter
+import com.ziq.base.mvp.MvpBaseActivity
 import com.zq.customviewlib.TranslateLoadingView
 
 /**
  * @author wuyanqiang
  * @date 2018/9/21
  */
-class TranslateLoadingViewActivity: BaseActivity<IBasePresenter>() {
+class TranslateLoadingViewActivity: MvpBaseActivity<IBasePresenter>() {
     override fun initForInject(appComponent: AppComponent?) {
     }
 
